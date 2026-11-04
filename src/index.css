@@ -1,0 +1,103 @@
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  :root {
+    --background: 220 20% 6%;
+    --foreground: 200 20% 90%;
+
+    --card: 220 18% 10%;
+    --card-foreground: 200 20% 90%;
+
+    --popover: 220 18% 10%;
+    --popover-foreground: 200 20% 90%;
+
+    --primary: 175 80% 50%;
+    --primary-foreground: 220 20% 6%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 200 20% 80%;
+
+    --muted: 220 15% 12%;
+    --muted-foreground: 200 10% 50%;
+
+    --accent: 30 90% 55%;
+    --accent-foreground: 220 20% 6%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 18%;
+    --input: 220 15% 15%;
+    --ring: 175 80% 50%;
+
+    --radius: 0.375rem;
+
+    /* Tracker-specific tokens */
+    --tracker-row: 220 18% 8%;
+    --tracker-row-highlight: 220 18% 12%;
+    --tracker-row-beat: 175 80% 15%;
+    --tracker-cell-active: 175 80% 50%;
+    --tracker-cell-note: 200 70% 65%;
+    --tracker-cell-instrument: 30 80% 60%;
+    --tracker-cell-volume: 120 60% 50%;
+    --tracker-cell-pitch: 45 70% 55%;
+    --tracker-playhead: 175 100% 60%;
+    --glow-primary: 0 0 20px hsl(175 80% 50% / 0.4);
+    --glow-accent: 0 0 15px hsl(30 90% 55% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono antialiased;
+    font-family: "JetBrains Mono", monospace;
+  }
+}
+
+@layer utilities {
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+  
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+  
+  .tracker-grid {
+    display: grid;
+    grid-template-columns: 40px repeat(4, 1fr);
+  }
+  
+  .pattern-cell {
+    @apply font-mono text-xs px-1 py-0.5 border-r border-border/30;
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+@keyframes vu-bounce {
+  0% { transform: scaleY(1); }
+  50% { transform: scaleY(1.1); }
+  100% { transform: scaleY(1); }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 1s ease-in-out infinite;
+}
+
+.animate-vu {
+  animation: vu-bounce 0.1s ease-out;
+}

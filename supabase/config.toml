@@ -1,0 +1,10 @@
+project_id = "your-supabase-project-id"
+
+[functions.generate-audio]
+verify_jwt = false
+
+[functions.generate-song]
+verify_jwt = false
+
+[functions.tracker-chat]
+verify_jwt = false
